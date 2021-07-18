@@ -24,6 +24,9 @@ import {
     @Column()
     city!: string
 
+    @Column()
+    country!: string
+
     @Column({ nullable: true })
     shippingMethod!: string
 

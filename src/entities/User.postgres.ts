@@ -33,6 +33,9 @@ export default class User extends BaseEntity {
   @Column()
   firstName!: string
 
+  @Column()
+  lastName!: string
+
   @Column({ nullable: true })
   mobile!: string
 

@@ -23,7 +23,6 @@ export const registerUser = async (
       email,
       password,
       firstName,
-      lastName,
       role,
       isAdmin,
     } = req.body
@@ -43,7 +42,6 @@ export const registerUser = async (
       email: email,
       password: hashedPassword,
       firstName: firstName,
-      lastName: lastName,
       role: role,
       isAdmin: isAdmin,
     })
@@ -64,7 +62,7 @@ export const updateUser = async (
   try {
     const update = req.body
     const user = req.user as User
-
+    // TODO: make DRY
     if (!user) {
       return next(new NotFoundError())
     }
@@ -77,7 +75,10 @@ export const updateUser = async (
     if (update.firstName) {
       user.firstName = update.firstName
     }
-    if (update.mobileNumber) {
+    if (update.firstName) {
+      user.lastName = update.lastName
+    }
+    if (update.mobile) {
       user.mobile = update.mobile
     }
     if (update.image) {

@@ -21,12 +21,12 @@ export const getPasswordResetURL = (user: any, token: any) =>
 export const resetPasswordTemplate = (user: any, url: any) => {
   const from = process.env.EMAIL_LOGIN
   const to = user.email
-  const subject = 'Uuden salasanan luominen  / vanhan salasanan vaihtaminen'
+  const subject = 'Change password'
   const html = `
   <p>Hei ${user.firstName || user.email},</p>
-  <p>Klikkaa linkkiä vaihtaaksesi salasanan:</p>
+  <p>Click the link in order to change the password:</p>
   <a href=${url}>${url}</a>
-  <p>Linkki vanhenee tunnin sisällä.</p>
+  <p>Link expires in an hour.</p>
   `
 
   return { from, to, subject, html }

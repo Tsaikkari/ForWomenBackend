@@ -23,6 +23,7 @@ export const registerUser = async (
       email,
       password,
       firstName,
+      lastName,
       role,
       isAdmin,
     } = req.body

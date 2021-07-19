@@ -43,6 +43,7 @@ export const registerUser = async (
       email: email,
       password: hashedPassword,
       firstName: firstName,
+      lastName: lastName,
       role: role,
       isAdmin: isAdmin,
     })
@@ -76,7 +77,7 @@ export const updateUser = async (
     if (update.firstName) {
       user.firstName = update.firstName
     }
-    if (update.firstName) {
+    if (update.lastName) {
       user.lastName = update.lastName
     }
     if (update.mobile) {

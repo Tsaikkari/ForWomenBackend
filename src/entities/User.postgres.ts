@@ -45,7 +45,7 @@ export default class User extends BaseEntity {
   @Column()
   role!: string
 
-  @Column({ default: false, nullable: true })
+  @Column({ default: false })
   isAdmin!: boolean
 
   @CreateDateColumn()

@@ -19,7 +19,6 @@ export const registerUser = async (
   try {
     const {
       info,
-      username,
       email,
       password,
       firstName,
@@ -28,18 +27,17 @@ export const registerUser = async (
       isAdmin,
     } = req.body
     const exists = await User.findOne({
-      where: { username: username },
+      where: { email: email },
     })
 
     if (exists) {
-      return next(new BadRequestError(`Username ${username} already exists`))
+      return next(new BadRequestError(`Email ${email} already exists`))
     }
 
     const hashedPassword = await bcrypt.hash(password, 8)
 
     const newUser = User.create({
       ...info,
-      username: username,
       email: email,
       password: hashedPassword,
       firstName: firstName,
@@ -67,9 +65,6 @@ export const updateUser = async (
     // TODO: make DRY
     if (!user) {
       return next(new NotFoundError())
-    }
-    if (update.username) {
-      user.username = update.username
     }
     if (update.email) {
       user.email = update.email

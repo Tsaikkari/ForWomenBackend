@@ -21,7 +21,7 @@ export const userLogin = async (
       return next(new InternalServerError())
     }
     if (!user) {
-      if (info.message === 'Invalid username or password') {
+      if (info.message === 'Invalid email or password') {
         return next(new UnauthorizedError(info.message))
       }
       return next(new NotFoundError(info.message))

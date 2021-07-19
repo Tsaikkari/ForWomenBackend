@@ -22,9 +22,6 @@ export default class User extends BaseEntity {
   id!: number
 
   @Column()
-  username!: string
-
-  @Column()
   email!: string
 
   @Column()

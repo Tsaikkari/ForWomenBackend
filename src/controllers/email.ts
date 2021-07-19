@@ -51,10 +51,10 @@ export const sendPasswordResetEmail = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { username } = req.params
+  const { email } = req.params
   let user
   try {
-    user = await User.findOne({ username })
+    user = await User.findOne({ email })
   } catch (err) {
     res.status(404).json('No user with that email')
   }

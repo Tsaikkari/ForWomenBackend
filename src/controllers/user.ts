@@ -62,10 +62,11 @@ export const updateUser = async (
   try {
     const update = req.body
     const user = req.user as User
-    // TODO: make DRY
+  
     if (!user) {
       return next(new NotFoundError())
     }
+    // TODO: make DRY
     if (update.email) {
       user.email = update.email
     }
@@ -85,10 +86,12 @@ export const updateUser = async (
       user.group = update.group
     }
 
+    // customer's hashed password
     if (update.password) {
       if (update.password.length > 30) {
         user.password != update.password
       }
+      // member's temporary password
       if (update.password.length < 30) {
         user.password = await bcrypt.hash(update.password, 8)
         await User.save(user)

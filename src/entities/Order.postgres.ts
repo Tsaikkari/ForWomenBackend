@@ -5,6 +5,7 @@ import {
     BaseEntity,
     ManyToMany,
     ManyToOne,
+    JoinTable,
   } from 'typeorm'
   
   import Service from './Service.postgres'
@@ -56,6 +57,10 @@ import {
       })
       user!: User
 
-    @ManyToMany(() => Service, (service) => service.orders)
+    @ManyToMany(() => Service, (service) => service.orders, {
+      cascade: true,
+    }) 
+    @JoinTable()
     services!: Service[]
+
   }

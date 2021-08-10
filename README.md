@@ -59,7 +59,7 @@ npm install
 3. For Mac and Linux user, give the permission to execute `db.sh` file. The script will run a postgres container as the app's database
 
 ```sh
-chmod -x ./scripts/db.sh;
+chmod -x db.sh;
 ```
 
 4. Create a `.env` file in the root directory and include the following varables:

@@ -23,10 +23,6 @@ export default class Service extends BaseEntity {
   @Column()
   price!: number
 
-  @ManyToMany(() => Order, (order) => order.services, {
-    cascade: true,
-    eager: true
-  })
-  @JoinTable()
+  @ManyToMany(() => Order, (order) => order.services)
   orders!: Order[]
 }
